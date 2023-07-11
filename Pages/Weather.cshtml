@@ -1,0 +1,114 @@
+﻿@page
+@model WeatherApp.Pages.WeatherModel
+@{
+    ViewData["Title"] = Model.place.name;
+
+}
+
+<script src="https://kit.fontawesome.com/48d0feabb0.js" crossorigin="anonymous"></script>
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="main-container">
+                <br><br><br>
+                <h1>Today in @Model.place.name</h1>
+                <br>
+                <i class="@Model.weatherInfo[0].todayWeatherIcon big-icon"></i>
+                <br><br><br>
+                <h1>@Model.weatherInfo[0].todayTempHigh° | @Model.weatherInfo[0].todayTempLow°</h1>
+                <br>
+                <center>
+                    <form id="search-form" asp-page="Index">
+                        <div class="search">
+                            <input type="text" name="searchField" class="round" placeholder="enter your city"/>
+                        </div>
+                    </form>
+                </center>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="right-column">
+            <div class="main-container">
+                
+                <div class="tab">
+                    @for (int i = 0; i < Model.weatherInfo.Count; i++) {
+                        <button class="tablinks" onclick="openTab(event, @i)" id="@i open">
+                            <h5>
+                                @Model.weatherInfo[i].date
+                            </h5>
+                            <h4>
+                                <i class="@Model.weatherInfo[i].todayWeatherIcon"></i>
+                            </h4>
+                            <p style="font-size: large">@Model.weatherInfo[i].todayTempHigh° | @Model.weatherInfo[i].todayTempLow°</p>
+                        </button>
+                    }
+                </div>
+
+
+                @for (int i = 0; i < Model.weatherInfo.Count; i++) {
+                    <div id="@i" class="tabcontent">
+                        <br>
+
+                        <table style="width:100%">
+                            <tr>
+                                <th><i class="fa-regular fa-clock"></i></th>
+                                <th><i class="fa-solid fa-temperature-three-quarters" style="color: #000000;"></i></th>
+                                <th><i class="fa-solid fa-sun-plant-wilt" style="color: #000000;"></i></th>
+                                <th><i class="fa-solid fa-umbrella" style="color: #000000;"></i></th>
+                                <th colspan="2"><i class="fas fa-wind" style="color: #000000;"></i></th>
+                            </tr>
+                            @foreach (Weather weather in Model.weatherInfo[i].weathers) {
+                                <tr>
+                                    <td>@weather.hour:00</td>
+                                    <td>@weather.temperature°</td>
+                                    <td><i class="@weather.weatherIcon"></i></td>
+                                    <td>@weather.precipitationProbability%</td>
+                                    <td>@weather.windSpeed mph</td>
+                                    <td>@weather.windDirection</td>
+
+                                </tr>
+
+                            }
+
+
+                        </table>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("0 open").click();
+</script>
+

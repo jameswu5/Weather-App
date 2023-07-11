@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="search-container">
+    <center>
+        <h2>welcome.</h2>
+    </center>
+    <br>
+    <form id="search-form" asp-page="Index">
+        <div class="search">
+            <input type="text" name="searchField" class="round" placeholder="enter your city"/>
+        </div>
+    </form>
+</div>

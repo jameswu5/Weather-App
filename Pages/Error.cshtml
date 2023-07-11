@@ -1,0 +1,36 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="error-container">
+                <h1 style="color:red">Not found</h1>
+                <br><br><br>
+                @if (Model.suggestions.Count > 0) {
+                    <h4>Did you mean:</h4>
+                    @foreach (Location l in Model.suggestions) {
+                        <a href="/Weather?id=@l.id">@l.name</a><br>
+                    }
+                } else {
+                    <p>No suggestions.</p>
+                }
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="right-column">
+            <div class="search-container" style="margin-top:35vh">
+                <h2>Try again:</h2><br>
+                <form id="search-form" asp-page="Index">
+                    <div class="search">
+                        <input type="text" name="searchField" class="round" placeholder="enter your city"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
