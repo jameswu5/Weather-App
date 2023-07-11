@@ -14,6 +14,6 @@ Populate the database by uncommenting the three commented lines (lines 11-13) on
 To run the app, type **dotnet watch**. On MacOS devices, you may encounter an error. This can be fixed by clicking *Show in Finder* every time you encounter the error. Right click on the file and open it. You may have to do this twice. You should then be able to run the app.
 
 ### Issues
-If there are issues with running this application, feel free to contact me through [email](jameswu144@gmail.com) or by [LinkedIn](https://www.linkedin.com/in/jameswu3/).
+If there are issues with running this application, feel free to contact me through [email](mailto:jameswu144@gmail.com) or by [LinkedIn](https://www.linkedin.com/in/jameswu3/).
 
 Enjoy!
