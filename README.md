@@ -1,10 +1,10 @@
 # Weather App
-A simple weather web application made with C# using the Met Office API.
+A simple weather web application made with C# (ASP.NET) using the Met Office API.
 
 ### Features
-Real-time weather data from Met Office in 5000 UK locations.
-Search bar with suggestions if your search cannot be found in the database.
-Intuitive interface with a minimalist design.
+* Real-time weather data from Met Office in 5000 UK locations.
+* Search bar with suggestions if your search cannot be found in the database.
+* Intuitive interface with a minimalist design.
 
 ### How to use
 Use the app by pasting just your Met Office API key to APIKey.txt. You can obtain a key by [this link](https://www.metoffice.gov.uk/services/data/datapoint/api).
